@@ -60,7 +60,7 @@ export default function App() {
   return <div className="app-shell">
     <header className="site-header"><div className="crest" aria-hidden="true">✦</div><div><p className="series-label">SARAH J. MAAS · READING COMPANION</p><h1>Throne of Glass <span>— Tandem Reading Tracker</span></h1></div></header>
     <main>
-      <div className="dashboard"><ProgressDashboard completedCount={completed.size} total={readingOrder.length} /><NextReading next={next} onJump={jumpToNext} /></div>
+      <div className="dashboard"><ProgressDashboard completed={completed} /><NextReading next={next} onJump={jumpToNext} /></div>
       <ReadingChecklist completed={completed} filter={filter} onFilterChange={setFilter} onToggle={toggle} />
       <section className="manage" aria-labelledby="manage-heading"><div><p className="eyebrow">KEEP YOUR PLACE</p><h2 id="manage-heading">Progress backup</h2><p>Your progress stays in this browser on this device. Export a backup before switching devices or clearing browser data.</p></div><div className="manage-actions"><button type="button" onClick={exportProgress}>Export progress</button><button type="button" onClick={() => importInput.current?.click()}>Import progress</button><button type="button" className="reset-button" onClick={resetProgress}>Reset progress</button><input ref={importInput} className="visually-hidden" tabIndex={-1} type="file" accept="application/json,.json" onChange={importProgress} aria-label="Select progress backup" /></div><p className="feedback" role="status">{storageError ? 'Progress could not be saved in this browser. Export a backup to keep it.' : message}</p></section>
     </main>

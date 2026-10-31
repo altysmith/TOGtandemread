@@ -17,3 +17,20 @@
 @keyframes ember-rise{0%{opacity:0;transform:translate(0,8px) scale(.5)}25%{opacity:1}100%{opacity:0;transform:translate(var(--drift),-35px) scale(.2)}}
 @keyframes fire-vanish{0%,80%{opacity:1}100%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.fire-burst{display:none}}
+
+/* Chapter-weighted progress across the two books. */
+.progress-title{margin:3px 0 5px;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;line-height:1.1;color:#f2eee5}
+.progress-card .percentage{white-space:nowrap;align-self:center}
+.book-progress-list{display:grid;gap:17px;margin-top:22px;padding-top:19px;border-top:1px solid #35413e}
+.book-progress-copy{display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:.81rem;color:#bdc7c2}
+.book-progress-copy span{min-width:0}
+.book-progress-copy span strong{font-size:.75rem;letter-spacing:.08em;margin-right:4px}
+.book-progress-copy>strong{font-size:.95rem;color:#e9e8df;white-space:nowrap}
+.book-progress.eos .book-progress-copy span strong{color:#82c9c8}
+.book-progress.tod .book-progress-copy span strong{color:#c5a3de}
+.book-progress-track{height:6px;margin-top:8px;border-radius:99px;background:#334044;overflow:hidden}
+.book-progress-track span{display:block;height:100%;border-radius:99px;transition:width .2s ease}
+.book-progress.eos .book-progress-track span{background:#6db9b8}
+.book-progress.tod .book-progress-track span{background:#b28bc8}
+.progress-card .progress-note{margin:16px 0 0;color:#aeb9b4;font-size:.75rem;line-height:1.45}
+@media(min-width:700px){.next-card{align-self:start}}

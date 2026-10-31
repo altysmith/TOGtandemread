@@ -28,6 +28,8 @@ npm run build
 
 Check any section in any order. Progress is stored in this browser’s `localStorage` under `tog-tandem-progress-v1`, using stable section IDs. It persists across reloads and browser restarts on the same device and browser. Browser data deletion or private browsing may erase it. It does not sync across devices.
 
+The dashboard shows chapter-weighted progress for Empire of Storms, Tower of Dawn, and both books combined. Chapters count individually, so a long reading section moves the percentage more than a one-chapter section. Nightfall and Fireheart count as one reading unit each. These are chapter-based estimates, not page percentages; page lengths vary by edition. The original 50-section counter remains visible, and existing saved progress and backups still work.
+
 Use **Export progress** to save a small JSON file. To move to another device or browser, open the site there and use **Import progress**. The file is validated and you must confirm before existing progress is replaced. **Reset progress** also requires confirmation. Backups contain only a schema version and completed IDs, with no personal information. Keep your last export before upgrades or browser cleanup.
 
 Because browser storage is tied to the site’s origin, changing the hostname, scheme (`http` to `https`), or port creates a separate progress store. Export and import to migrate between origins. This matters when switching from a local Pi address to a Cloudflare domain.
