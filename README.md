@@ -24,6 +24,16 @@ npm run build
 
 `dist/` is the static production site. The app works without the Google fonts connection, using installed fallback fonts.
 
+## Cloudflare Worker deployment
+
+The existing Worker URL is `https://tandemree.ericaltenhoff.workers.dev/`. The `wrangler.jsonc` file names that Worker and serves `dist/` as static assets. The repository does **not** deploy automatically until it is connected to Cloudflare Workers Builds.
+
+In the Cloudflare dashboard, open **Workers & Pages → tandemree → Settings → Builds → Connect**, then select `altysmith/TOGtandemread`. Set the production branch to `main`, project root to `/`, build command to `npm run build`, and deploy command to `npx wrangler deploy`. Cloudflare provides the deployment credentials for its own build integration. Check the first build log and open the Worker URL to verify the site. If connecting does not start a build, push a new commit to `main` or use **Retry deployment** in the Builds tab.
+
+For a manual deployment from a machine already logged into the correct Cloudflare account, run `npm install`, `npm run build`, then `npm run deploy`. Confirm that the account contains the existing `tandemree` Worker before using that command. There is no need to run Docker or expose a development server for the Worker deployment.
+
+Progress stays in the browser on that exact URL. A new hostname has separate browser storage; export progress from the old URL and import it at the new one.
+
 ## Progress, backup, and restore
 
 Check any section in any order. Progress is stored in this browser’s `localStorage` under `tog-tandem-progress-v1`, using stable section IDs. It persists across reloads and browser restarts on the same device and browser. Browser data deletion or private browsing may erase it. It does not sync across devices.
@@ -34,7 +44,7 @@ Use **Export progress** to save a small JSON file. To move to another device or 
 
 Because browser storage is tied to the site’s origin, changing the hostname, scheme (`http` to `https`), or port creates a separate progress store. Export and import to migrate between origins. This matters when switching from a local Pi address to a Cloudflare domain.
 
-## Raspberry Pi deployment
+## Optional Raspberry Pi deployment
 
 The Docker image uses multi-stage Node and Nginx builds and supports ARM64. Copy this project to your Raspberry Pi, then from its directory run:
 
@@ -50,4 +60,4 @@ If using your own Nginx reverse proxy, proxy this hostname to `http://127.0.0.1:
 
 ## Upgrade
 
-Export your progress first, then update the project files and run `docker compose up -d --build` again. Keep the same public hostname to retain browser progress. If the hostname changes, import your backup at the new address. The stored format is versioned; future reading-order edits should keep the IDs in `src/data/tandemReadingOrder.ts` stable.
+Export your progress first, then push updated project files to `main`. Cloudflare Workers Builds deploys the new static site when the repository is connected. If using the Pi, run `docker compose up -d --build` again instead. Keep the same public hostname to retain browser progress. If the hostname changes, import your backup at the new address. The stored format is versioned; future reading-order edits should keep the IDs in `src/data/tandemReadingOrder.ts` stable.
