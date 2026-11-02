@@ -26,11 +26,11 @@ npm run build
 
 ## Cloudflare Worker deployment
 
-The existing Worker URL is `https://tandemree.ericaltenhoff.workers.dev/`. The `wrangler.jsonc` file names that Worker and serves `dist/` as static assets. The repository does **not** deploy automatically until it is connected to Cloudflare Workers Builds.
+The existing Worker shown in Cloudflare is named `tandemread`. It serves `https://tandemread.altylab.com/` and `https://tandemread.ericaltenhof.workers.dev/`. The `wrangler.jsonc` file names that Worker, preserves both hostnames, and serves `dist/` as static assets. The repository does **not** deploy automatically until it is connected to Cloudflare Workers Builds.
 
-In the Cloudflare dashboard, open **Workers & Pages → tandemree → Settings → Builds → Connect**, then select `altysmith/TOGtandemread`. Set the production branch to `main`, project root to `/`, build command to `npm run build`, and deploy command to `npx wrangler deploy`. Cloudflare provides the deployment credentials for its own build integration. Check the first build log and open the Worker URL to verify the site. If connecting does not start a build, push a new commit to `main` or use **Retry deployment** in the Builds tab.
+In the Cloudflare dashboard, open **Workers & Pages → tandemread → Settings → Builds → GitHub**, then select `altysmith/TOGtandemread`. Set the production branch to `main`, project root to `/`, build command to `npm run build`, and deploy command to `npx wrangler deploy`. Cloudflare provides the deployment credentials for its own build integration. Check the first build log and open `https://tandemread.altylab.com/` to verify the site. If connecting does not start a build, push a new commit to `main` or use **Retry deployment** in the Builds tab.
 
-For a manual deployment from a machine already logged into the correct Cloudflare account, run `npm install`, `npm run build`, then `npm run deploy`. Confirm that the account contains the existing `tandemree` Worker before using that command. There is no need to run Docker or expose a development server for the Worker deployment.
+For a manual deployment from a machine already logged into the correct Cloudflare account, run `npm install`, `npm run build`, then `npm run deploy`. Confirm that the account contains the existing `tandemread` Worker before using that command. There is no need to run Docker or expose a development server for the Worker deployment.
 
 Progress stays in the browser on that exact URL. A new hostname has separate browser storage; export progress from the old URL and import it at the new one.
 

@@ -1,7 +1,14 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "tandemree",
+  "name": "tandemread",
   "compatibility_date": "2026-10-31",
+  "workers_dev": true,
+  "routes": [
+    {
+      "pattern": "tandemread.altylab.com",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application"
