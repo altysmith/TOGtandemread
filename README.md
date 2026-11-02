@@ -34,6 +34,8 @@ For a manual deployment from a machine already logged into the correct Cloudflar
 
 Progress stays in the browser on that exact URL. A new hostname has separate browser storage; export progress from the old URL and import it at the new one.
 
+The custom domain currently uses Cloudflare Access. Sign in through its Access page on your phone before using the tracker. This access rule is managed in Cloudflare and is not changed by this repository.
+
 ## Progress, backup, and restore
 
 Check any section in any order. Progress is stored in this browser’s `localStorage` under `tog-tandem-progress-v1`, using stable section IDs. It persists across reloads and browser restarts on the same device and browser. Browser data deletion or private browsing may erase it. It does not sync across devices.
